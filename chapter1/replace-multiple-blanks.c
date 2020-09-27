@@ -1,30 +1,28 @@
 // replaces multiple blanks with just one
 
 #include <stdio.h>
+#define NONBLANK '-'
 
 int main(){
     int c;
-    int n_spaces = 0;
-    int space_flag = 0;
-
+    int lastc = NONBLANK;
     while ( (c = getchar()) != EOF)
     {
-
-        if (c != ' ' && space_flag==1){
-            n_spaces = 0;
-            space_flag = 0;
+        if (c == ' ')
+        {
+            if(lastc != ' ')
+            {
+                putchar(c);
+            }
+                
         }
-
-        if (c == ' '){
-            n_spaces++;
-        }
-        
-        if (n_spaces>=2){
-            space_flag=1;
-        }
- 
-        if (!space_flag){
+        else
+        {
             putchar(c);
-        }
-    }    
+        }   
+
+        lastc=c;
+    }
 }
+   
+    
